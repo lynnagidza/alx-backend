@@ -92,5 +92,9 @@ The method should return a dictionary with the following key-value pairs:
 * if the user queries index 0, ```page_size``` 10, they will get rows indexed 0 to 9 included.
 * if they request the next index, 10, with ```page_size``` 10, but rows 3, 6 and 7 were deleted, they user should still receive rows indexed 10 to 19 included.
 
+## Resources
+* [REST API Design: Pagination](https://www.moesif.com/blog/technical/api-design/REST-API-Design-Filtering-Sorting-and-Pagination/)
+* [HATEOAS](https://en.wikipedia.org/wiki/HATEOAS)
+
 ## License
 MIT. See [LICENSE](./LICENSE) for more details.
