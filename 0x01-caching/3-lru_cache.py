@@ -27,7 +27,7 @@ class LRUCache(BaseCaching):
         """ Get an item by key """
         if key and key in self.cache_data:
             self.queue.remove(key)
-            self.queue.append(key) # this moves it to most recently used
+            self.queue.append(key)  # this moves it to most recently accessed
             return self.cache_data[key]
         return None
 

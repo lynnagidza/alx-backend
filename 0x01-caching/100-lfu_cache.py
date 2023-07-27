@@ -10,7 +10,7 @@ class LFUCache(BaseCaching):
         """ Constructor """
         super().__init__()
         self.queue = []
-        self.count = {} # tracks how many times a key has been used
+        self.count = {}  # tracks how many times a key has been used
 
     def put(self, key, item):
         """ Add an item in the cache """
@@ -25,21 +25,21 @@ class LFUCache(BaseCaching):
                     i = self.queue.index(k)
                     if val == minimum:
                         del self.cache_data[self.queue[i]]
-                        del self.count[self.queue[i]] # remove deleted key count
+                        del self.count[self.queue[i]]  # remove deleted key count
                         print(f"DISCARD: {self.queue[i]}")
                         self.queue.pop(i)
                         break
             self.queue.append(key)
             self.cache_data[key] = item
             if key_patch:
-                self.count[key] += 1 # increment key count if existing key value is modified
+                self.count[key] += 1  # increment key count if existing key value is modified
             else:
                 self.count[key] = 0
 
     def get(self, key):
         """ Get an item by key """
         if key and key in self.cache_data:
-            self.count[key] += 1 # increment key count
+            self.count[key] += 1  # increment key count
             self.queue.remove(key)
             self.queue.append(key)
             return self.cache_data[key]
