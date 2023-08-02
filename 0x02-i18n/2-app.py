@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """ Get locale from request """
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, g
 from flask_babel import Babel
 
 
@@ -30,4 +30,5 @@ def index():
     Return:
       - 2-index.html
     """
-    return render_template("2-index.html")
+    g.locale = get_locale()
+    return render_template("2-index.html", get_locale=get_locale)

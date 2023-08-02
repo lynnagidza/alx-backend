@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ Parameterize templates """
-from flask import Flask, render_template, request
-from flask_babel import Babel
+from flask import Flask, render_template, request, g
+from flask_babel import Babel, gettext
 
 
 app = Flask(__name__)
@@ -29,5 +29,9 @@ def index():
     """ GET /
     Return:
       - 3-index.html
-    """
-    return render_template("3-index.html")
+    """    
+    g.locale = get_locale()
+    home_title = gettext("home_title")
+    home_header = gettext("home_header")
+    return render_template("3-index.html", home_title=home_title,
+                           home_header=home_header, get_locale=get_locale)
