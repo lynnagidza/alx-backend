@@ -43,6 +43,7 @@ def get_locale():
     # Priority 4 - Default locale
     return request.accept_languages.best_match(Config.LANGUAGES)
 
+
 def get_user(login_as):
     """ Get user from mock db """
     if login_as:
@@ -66,9 +67,9 @@ def index():
     logged_in_as = gettext("logged_in_as")
     not_logged_in = gettext("not_logged_in")
     return render_template('5-index.html', home_title=home_title,
-                            home_header=home_header, get_locale=get_locale,
-                            get_user=g.user, logged_in_as=logged_in_as,
-                            not_logged_in=not_logged_in)
+                           home_header=home_header, get_locale=get_locale,
+                           get_user=g.user, logged_in_as=logged_in_as,
+                           not_logged_in=not_logged_in)
 
 
 # if __name__ == "__main__":
